@@ -1,6 +1,10 @@
-To create filename and labels file for a binary dataset where the file names are the class names, run
-in the directory
+# Dataset setup
+The image files of this dataset have file names corresponding to its class (eg cat_xxx.tiff for cat image). To create a csv file with filenames and corresponsing labels for this  dataset run,
+    
 
-
-    ls | awk '/^<fill_class_label_here>/ {printf("%s,%d\n",$0, 1) >> "train_labels.csv"} { printf("%s,%d\n",$0, 0) >> 
+    $ cd <train_data_folder>
+    
+    $ ls | awk '/^<class_name_to_match_in_the_file_names>/ {printf("%s,%d\n",$0, <label_for_class>) >> "train_labels.csv"} { printf("%s,%d\n",$0, <label_for_not_class>) >> 
     "train_labels.csv"}'
+
+Usualy the labels are chosen as 0 and 1 for binary classification.
